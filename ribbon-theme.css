@@ -1,0 +1,128 @@
+:root {
+    --ribbonTransition: 0.5s;
+    --ribbonRadius: 5px;
+    --ribbonMargin: 3px;
+    --ribbonMarginMinusOne: 2px;
+    --ribbonMarginPlusOne: 4px;
+    --ribbonBackgroundImage: url("chrome://vivaldi-data/local-image/DVHPBS3HZ6FRMC6NTTNA3FJZSL2PXLLO.jpg");
+}
+
+/* background color */
+
+#browser {
+    background-image: none !important;
+    background-color: var(--colorAccentBg) !important;
+    transition: background-color var(--ribbonTransition) !important;
+}
+
+/* tabs */
+
+#header,
+#browser:not(.transparent-tabbar) #tabs-tabbar-container,
+#browser.color-behind-tabs-on .tab-position .tab.active.active,
+#browser .tab-position .tab.active,
+.color-behind-tabs-off .mainbar {
+    transition: background-color var(--ribbonTransition), border-color var(--ribbonTransition) !important;
+}
+
+/* address panel */
+
+.mainbar {
+    margin: 0 var(--ribbonMargin) 0 var(--ribbonMargin) !important;
+    transition: border-color var(--ribbonTransition) !important;
+    border-width: 0 !important;
+}
+
+.UrlBar-AddressField {
+    background-color: var(--colorBgAlphaBlur) !important;
+    border-radius: var(--ribbonRadius);
+}
+
+.OmniDropdown {
+    background-color: var(--colorBgAlpha) !important;
+    backdrop-filter: var(--backgroundBlur);
+}
+
+/* side panel + content */
+
+#browser:not(.fullscreen) > #main > .inner {
+    margin: 0 var(--ribbonMarginPlusOne) var(--ribbonMargin) var(--ribbonMargin) !important;
+    border-radius: var(--ribbonRadius) !important;
+}
+
+/* side panel */
+
+#browser:not(.fullscreen) > #main > .inner > #panels-container {
+    margin: 0 var(--ribbonMarginPlusOne) 0 0 !important;
+    border-radius: var(--ribbonRadius) !important;
+    background-color: var(--colorBgAlphaBlur) !important;
+}
+
+#panels {
+    border-radius: var(--ribbonRadius) !important;
+}
+
+#browser:not(.fullscreen) > #main > .inner > #panels-container > #panels > #switch {
+    margin: 0 var(--ribbonMarginPlusOne) 0 0 !important;
+    border-radius: var(--ribbonRadius) !important;
+    backdrop-filter: none;
+}
+
+/* .panel-group {
+    background-color: var(--colorBgAlphaBlur) !important;
+} */
+
+.panel-group, .webpanel-content {
+    margin: 0 0 0 var(--ribbonMargin) !important;
+    border-radius: var(--ribbonRadius) !important;
+}
+
+#panels-container:not(.overlay) > div > div > div .webpanel-stack {
+    margin-left: 10px !important;
+}
+
+/* content */
+
+#webview-container,
+#webpage-stack {
+    border-radius: var(--ribbonRadius) !important;
+}
+
+/* start page */
+
+.startpage {
+    background-image: var(--ribbonBackgroundImage);
+    background-position: center;
+    background-size: cover;
+}
+
+/* quick commands */
+
+.modal-wrapper {
+    background-color: var(--colorBgAlpha) !important;
+    backdrop-filter: var(--backgroundBlur) !important;
+}
+
+.quick-commands {
+    background-color: inherit !important;
+}
+
+/* footer */
+
+#browser:not(.fullscreen) > footer {
+    margin: 0 var(--ribbonMargin) var(--ribbonMarginMinusOne) var(--ribbonMargin) !important;
+    border-radius: var(--ribbonRadius) !important;
+    background-color: var(--colorBgAlphaBlur) !important;
+}
+
+footer::after {
+    background-color: transparent !important;
+}
+
+/* mail */
+
+#mail_search {
+    margin: 0 var(--ribbonMarginPlusOne) 0 0 !important;
+    border-radius: var(--ribbonRadius) !important;
+    background-color: var(--colorBgAlphaBlur) !important;
+}
