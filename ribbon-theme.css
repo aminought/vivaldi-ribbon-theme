@@ -4,7 +4,7 @@
     --ribbonMargin: 3px;
     --ribbonMarginMinusOne: calc(var(--ribbonMargin) - 1px);
     --ribbonMarginPlusOne: calc(var(--ribbonMargin) + 1px);
-    --ribbonSidebarSize: 24px;
+    --ribbonSidebarSize: 28px;
     --ribbonFooterSize: 24px;
     --ribbonBackgroundImage: url("");
 }
