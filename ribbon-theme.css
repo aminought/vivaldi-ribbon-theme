@@ -4,10 +4,8 @@
     --ribbonMargin: 3px;
     --ribbonMarginMinusOne: calc(var(--ribbonMargin) - 1px);
     --ribbonMarginPlusOne: calc(var(--ribbonMargin) + 1px);
-    --ribbonSidebarSize: 25px;
-    --ribbonSidebarButtonSize: calc(var(--ribbonSidebarSize) - 1px);
-    --ribbonFooterSize: 25px;
-    --ribbonFooterButtonSize: calc(var(--ribbonFooterSize) - 1px);
+    --ribbonSidebarSize: 24px;
+    --ribbonFooterSize: 24px;
     --ribbonBackgroundImage: url("");
 }
 
@@ -81,7 +79,7 @@
 
 #switch,
 .toolbar-panel .button-toolbar {
-    width: var(--ribbonSidebarButtonSize) !important;
+    width: var(--ribbonSidebarSize) !important;
 }
 
 .panel-group {
@@ -135,10 +133,7 @@ footer::after {
     background-color: transparent !important;
 }
 
-footer .toolbar-statusbar {
-    height: var(--ribbonFooterSize) !important;
-}
-
+footer .toolbar-statusbar,
 footer .toolbar-statusbar .button-toolbar button {
-    height: var(--ribbonFooterButtonSize) !important;
+    height: var(--ribbonFooterSize) !important;
 }
