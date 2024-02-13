@@ -37,6 +37,7 @@
 
 .UrlBar-AddressField {
     background-color: var(--colorBgAlphaBlur) !important;
+    border: none !important;
     border-radius: var(--ribbonRadius);
 }
 
