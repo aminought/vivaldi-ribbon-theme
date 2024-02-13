@@ -6,6 +6,8 @@
     --ribbonMarginPlusOne: calc(var(--ribbonMargin) + 1px);
     --ribbonSidebarSize: 25px;
     --ribbonSidebarButtonSize: calc(var(--ribbonSidebarSize) - 1px);
+    --ribbonFooterSize: 25px;
+    --ribbonFooterButtonSize: calc(var(--ribbonFooterSize) - 1px);
     --ribbonBackgroundImage: url("");
 }
 
@@ -131,4 +133,12 @@
 
 footer::after {
     background-color: transparent !important;
+}
+
+footer .toolbar-statusbar {
+    height: var(--ribbonFooterSize) !important;
+}
+
+footer .toolbar-statusbar .button-toolbar button {
+    height: var(--ribbonFooterButtonSize) !important;
 }
