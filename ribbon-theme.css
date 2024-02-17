@@ -6,7 +6,6 @@
     --ribbonMarginPlusOne: calc(var(--ribbonMargin) + 1px);
     --ribbonSidebarSize: 28px;
     --ribbonFooterSize: 24px;
-    --ribbonBackgroundImage: url("");
 }
 
 /* background color */
@@ -38,7 +37,7 @@
 .UrlBar-AddressField {
     background-color: var(--colorBgAlphaBlur) !important;
     border: none !important;
-    border-radius: var(--ribbonRadius);
+    border-radius: var(--ribbonRadius) !important;
 }
 
 .pageload,
@@ -71,7 +70,6 @@
 }
 
 #browser:not(.fullscreen) #main .inner #panels-container #panels #switch {
-    margin: 0 var(--ribbonMarginPlusOne) 0 0 !important;
     border-radius: var(--ribbonRadius) !important;
     backdrop-filter: none;
 }
@@ -90,15 +88,17 @@
 
 .panel-group {
     left: var(--ribbonSidebarSize) !important;
+    background-color: var(--ribbonColorAccentBgAlpha) !important;
 }
 
-.panel-group, .webpanel-content {
+#panels-container.overlay #panels .panel-group,
+.webpanel-content {
     margin: 0 0 0 var(--ribbonMargin) !important;
     border-radius: var(--ribbonRadius) !important;
 }
 
-#panels-container:not(.overlay) div div div .webpanel-stack {
-    margin-left: 10px !important;
+.panel-group {
+    border-radius: var(--ribbonRadius) !important;
 }
 
 /* content */
@@ -142,4 +142,10 @@ footer::after {
 footer .toolbar-statusbar,
 footer .toolbar-statusbar .button-toolbar button {
     height: var(--ribbonFooterSize) !important;
+}
+
+/* mail */
+
+#mail_search .list-wrapper {
+    background-color: var(--colorBg) !important;
 }
