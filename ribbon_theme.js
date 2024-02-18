@@ -2,6 +2,7 @@
     "use strict";
 
     const REPLACE_DARK_COLOR = true;
+    const DARK_COLOR_BRIGHTNESS_THRESHOLD = 50;
     const DARK_COLOR_REPLACEMENT = "#4d4d4d";
 
     class RibbonTheme {
@@ -42,7 +43,7 @@
         }
 
         #replaceDarkColor() {
-            if (this.#colorAccentBg != DARK_COLOR_REPLACEMENT && getBrightness(this.#colorAccentBg) < 45) {
+            if (this.#colorAccentBg != DARK_COLOR_REPLACEMENT && getBrightness(this.#colorAccentBg) < DARK_COLOR_BRIGHTNESS_THRESHOLD) {
                 this.#colorAccentBg = DARK_COLOR_REPLACEMENT;
             }
         }

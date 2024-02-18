@@ -2,8 +2,6 @@
     --ribbonTransition: 0.5s;
     --ribbonRadius: 5px;
     --ribbonMargin: 3px;
-    --ribbonMarginMinusOne: calc(var(--ribbonMargin) - 1px);
-    --ribbonMarginPlusOne: calc(var(--ribbonMargin) + 1px);
     --ribbonSidebarSize: 28px;
     --ribbonFooterSize: 24px;
 }
@@ -29,7 +27,6 @@
 /* address panel */
 
 .mainbar {
-    margin: 0 var(--ribbonMargin) 0 var(--ribbonMargin) !important;
     transition: border-color var(--ribbonTransition) !important;
     border-width: 0 !important;
 }
@@ -53,24 +50,17 @@
 /* side panel + content */
 
 #browser:not(.fullscreen) #main .inner {
-    margin: 0 var(--ribbonMarginPlusOne) var(--ribbonMargin) var(--ribbonMargin) !important;
-    border-radius: var(--ribbonRadius) !important;
+    margin: 0 var(--ribbonMargin) var(--ribbonMargin) var(--ribbonMargin) !important;
 }
 
 /* side panel */
 
 #browser:not(.fullscreen) #main .inner #panels-container {
-    margin: 0 var(--ribbonMarginPlusOne) 0 0 !important;
-    border-radius: var(--ribbonRadius) !important;
-    background-color: var(--colorBgAlphaBlur) !important;
-}
-
-#panels {
+    margin: 0 var(--ribbonMargin) 0 0 !important;
     border-radius: var(--ribbonRadius) !important;
 }
 
 #browser:not(.fullscreen) #main .inner #panels-container #panels #switch {
-    border-radius: var(--ribbonRadius) !important;
     backdrop-filter: none;
 }
 
@@ -94,10 +84,6 @@
 #panels-container.overlay #panels .panel-group,
 .webpanel-content {
     margin: 0 0 0 var(--ribbonMargin) !important;
-    border-radius: var(--ribbonRadius) !important;
-}
-
-.panel-group {
     border-radius: var(--ribbonRadius) !important;
 }
 
@@ -130,7 +116,7 @@
 /* footer */
 
 #browser:not(.fullscreen) footer {
-    margin: 0 var(--ribbonMargin) var(--ribbonMarginMinusOne) var(--ribbonMargin) !important;
+    margin: 0 var(--ribbonMargin) var(--ribbonMargin) var(--ribbonMargin) !important;
     border-radius: var(--ribbonRadius) !important;
     background-color: var(--colorBgAlphaBlur) !important;
 }
