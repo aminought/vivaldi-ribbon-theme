@@ -1,6 +1,6 @@
 :root {
     --ribbonTransition: 0.5s;
-    --ribbonMargin: 3px;
+    --ribbonMargin: 5px;
     --ribbonSidebarSize: 28px;
     --ribbonFooterSize: 22px;
 }
@@ -11,6 +11,20 @@
     background-image: none !important;
     background-color: var(--colorAccentBg) !important;
     transition: background-color var(--ribbonTransition) !important;
+}
+
+/* header */
+
+#header {
+    padding: var(--ribbonMargin) 0 var(--ribbonMargin) 0 !important;
+}
+
+button.vivaldi {
+    display: none !important;
+}
+
+#tabs-container {
+    padding-left: 0px !important;
 }
 
 /* tabs */
@@ -27,16 +41,25 @@
     background-color: var(--colorAccentBgAlphaHeavy) !important;
 }
 
+.tab.active {
+    border-bottom-left-radius: var(--radiusHalf) !important;
+    border-bottom-right-radius: var(--radiusHalf) !important;
+}
+
+.tab.active:before, .tab.active:after {
+    background-color: transparent !important;
+}
+
 /* address panel */
 
 .mainbar {
     transition: border-color var(--ribbonTransition) !important;
     border-width: 0 !important;
+    border-radius: var(--radius) !important;
 }
 
 .color-behind-tabs-on .mainbar {
     margin: 0 var(--ribbonMargin) var(--ribbonMargin) var(--ribbonMargin) !important;
-    border-radius: var(--radius) !important;
 }
 
 .UrlBar-AddressField {
