@@ -1,9 +1,8 @@
 :root {
     --ribbonTransition: 0.5s;
-    --ribbonRadius: 5px;
     --ribbonMargin: 3px;
     --ribbonSidebarSize: 28px;
-    --ribbonFooterSize: 24px;
+    --ribbonFooterSize: 22px;
 }
 
 /* background color */
@@ -24,6 +23,10 @@
     transition: background-color var(--ribbonTransition), border-color var(--ribbonTransition) !important;
 }
 
+.accordion-toggle-arrow {
+    background-color: var(--colorAccentBgAlphaHeavy) !important;
+}
+
 /* address panel */
 
 .mainbar {
@@ -31,20 +34,19 @@
     border-width: 0 !important;
 }
 
+.color-behind-tabs-on .mainbar {
+    margin: 0 var(--ribbonMargin) var(--ribbonMargin) var(--ribbonMargin) !important;
+    border-radius: var(--radius) !important;
+}
+
 .UrlBar-AddressField {
     background-color: var(--colorBgAlphaBlur) !important;
     border: none !important;
-    border-radius: var(--ribbonRadius) !important;
-}
-
-.pageload,
-.pageload-indicator {
-    border-radius: var(--ribbonRadius) !important;
 }
 
 .OmniDropdown {
     background-color: var(--colorBgAlpha) !important;
-    backdrop-filter: var(--backgroundBlur);
+    backdrop-filter: var(--backgroundBlur) !important;
 }
 
 /* side panel + content */
@@ -57,11 +59,11 @@
 
 #browser:not(.fullscreen) #main .inner #panels-container {
     margin: 0 var(--ribbonMargin) 0 0 !important;
-    border-radius: var(--ribbonRadius) !important;
+    border-radius: var(--radius) !important;
 }
 
 #browser:not(.fullscreen) #main .inner #panels-container #panels #switch {
-    backdrop-filter: none;
+    backdrop-filter: none !important;
 }
 
 #panels-container.icons,
@@ -81,25 +83,28 @@
     background-color: var(--ribbonColorAccentBgAlpha) !important;
 }
 
-#panels-container.overlay #panels .panel-group,
-.webpanel-content {
+#panels-container.overlay #panels .panel-group {
     margin: 0 0 0 var(--ribbonMargin) !important;
-    border-radius: var(--ribbonRadius) !important;
+    border-radius: var(--radius) !important;
 }
 
 /* content */
 
 #webview-container,
 #webpage-stack {
-    border-radius: var(--ribbonRadius) !important;
+    border-radius: var(--radius) !important;
 }
 
 /* start page */
 
 .startpage {
-    background-image: var(--ribbonBackgroundImage);
-    background-position: center;
-    background-size: cover;
+    background-image: var(--ribbonBackgroundImage) !important;
+    background-position: center !important;
+    background-size: cover !important;
+}
+
+.dial {
+    backdrop-filter: var(--backgroundBlur) !important;
 }
 
 /* quick commands */
@@ -117,7 +122,7 @@
 
 #browser:not(.fullscreen) footer {
     margin: 0 var(--ribbonMargin) var(--ribbonMargin) var(--ribbonMargin) !important;
-    border-radius: var(--ribbonRadius) !important;
+    border-radius: var(--radius) !important;
     background-color: var(--colorBgAlphaBlur) !important;
 }
 
