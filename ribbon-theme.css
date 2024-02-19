@@ -105,6 +105,11 @@ button.vivaldi {
     width: var(--ribbonSidebarSize) !important;
 }
 
+#switch {
+    flex: 0 0 var(--ribbonSidebarSize) !important;
+    max-width: var(--ribbonSidebarSize) !important;
+}
+
 .panel-group {
     margin: 0 0 0 var(--ribbonMargin) !important;
     border-radius: var(--radius) !important;
@@ -117,6 +122,11 @@ button.vivaldi {
 
 #panels-container:not(.overlay) .panel-group {
     background-color: transparent !important;
+}
+
+.panel-collapse-guard {
+    min-width: auto !important;
+    max-width: none !important;
 }
 
 header.webpanel-header {
