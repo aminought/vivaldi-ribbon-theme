@@ -1,8 +1,8 @@
 :root {
     --ribbonTransition: 0.5s;
-    --ribbonMargin: 5px;
+    --ribbonMargin: 3px;
     --ribbonSidebarSize: 28px;
-    --ribbonFooterSize: 22px;
+    --ribbonFooterSize: 24px;
 }
 
 /* background color */
@@ -50,6 +50,10 @@ button.vivaldi {
     background-color: transparent !important;
 }
 
+.color-behind-tabs-on .tab.active {
+    background-color: var(--colorBgAlphaHeavy) !important;
+}
+
 /* address panel */
 
 .mainbar {
@@ -60,6 +64,7 @@ button.vivaldi {
 
 .color-behind-tabs-on .mainbar {
     margin: 0 var(--ribbonMargin) var(--ribbonMargin) var(--ribbonMargin) !important;
+    background-color: var(--colorBgAlphaHeavy);
 }
 
 .UrlBar-AddressField {
@@ -146,7 +151,7 @@ button.vivaldi {
 #browser:not(.fullscreen) footer {
     margin: 0 var(--ribbonMargin) var(--ribbonMargin) var(--ribbonMargin) !important;
     border-radius: var(--radius) !important;
-    background-color: var(--colorBgAlphaBlur) !important;
+    background-color: var(--colorBgAlphaHeavy) !important;
 }
 
 footer::after {
