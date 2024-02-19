@@ -117,6 +117,10 @@ button.vivaldi {
     border-radius: var(--radius) !important;
 }
 
+header.webpanel-header {
+    box-shadow: none !important;
+}
+
 /* content */
 
 #webview-container,
