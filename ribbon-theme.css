@@ -128,6 +128,15 @@ header.webpanel-header {
     border-radius: var(--radius) !important;
 }
 
+#webview-container:has(#webpage-stack .tiled.visible) {
+    padding: 0px !important;
+    box-shadow: none !important;
+}
+
+.tile, .webpageview.tiled:not(.active) {
+    box-shadow: none !important;
+}
+
 /* start page */
 
 .startpage {
