@@ -3,7 +3,7 @@
 
     const REPLACE_DARK_COLOR = true;
     const DARK_COLOR_BRIGHTNESS_THRESHOLD = 50;
-    const DARK_COLOR_REPLACEMENT = "#4d4d4d";
+    const DARK_COLOR_REPLACEMENT = "#808080";
 
     class RibbonTheme {
         #browserStyleMutationObserver = null;

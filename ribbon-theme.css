@@ -66,12 +66,19 @@ button.vivaldi {
 
 .color-behind-tabs-on .mainbar {
     margin: 0 var(--ribbonMargin) var(--ribbonMargin) var(--ribbonMargin) !important;
-    background-color: var(--colorBgAlphaHeavy);
+    background-color: var(--colorBg);
 }
 
 .UrlBar-AddressField {
-    background-color: var(--colorBgAlphaBlur) !important;
     border: none !important;
+}
+
+.color-behind-tabs-on .UrlBar-AddressField {
+    background-color: var(--colorAccentBgAlphaHeavy) !important;
+}
+
+.color-behind-tabs-off .UrlBar-AddressField {
+    background-color: var(--colorBgAlphaBlur) !important;
 }
 
 .OmniDropdown {
