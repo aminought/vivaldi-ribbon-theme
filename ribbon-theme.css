@@ -15,7 +15,7 @@
 
 /* header */
 
-#header {
+#browser:not(.fullscreen) #header {
     padding: var(--ribbonMargin) 0 var(--ribbonMargin) 0 !important;
 }
 
@@ -64,7 +64,7 @@ button.vivaldi {
     border-radius: var(--radius) !important;
 }
 
-.color-behind-tabs-on .mainbar {
+#browser:not(.fullscreen).color-behind-tabs-on .mainbar {
     margin: 0 var(--ribbonMargin) var(--ribbonMargin) var(--ribbonMargin) !important;
     background-color: var(--colorBg);
 }
@@ -103,12 +103,12 @@ button.vivaldi {
     backdrop-filter: none !important;
 }
 
-#panels-container.icons,
-#panels-container.overlay,
-#panels,
-#switch,
-.toolbar-panel,
-.toolbar-panel .button-toolbar {
+#browser:not(.fullscreen) #panels-container.icons,
+#browser:not(.fullscreen) #panels-container.overlay,
+#browser:not(.fullscreen) #panels,
+#browser:not(.fullscreen) #switch,
+#browser:not(.fullscreen) .toolbar-panel,
+#browser:not(.fullscreen) .toolbar-panel .button-toolbar {
     width: var(--ribbonSidebarSize) !important;
 }
 
