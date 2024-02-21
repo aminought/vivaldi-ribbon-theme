@@ -94,7 +94,7 @@ button.vivaldi {
 
 /* side panel */
 
-#browser:not(.fullscreen) #panels-container {
+#browser:not(.fullscreen) #panels-container.left.icons {
     margin: 0 var(--ribbonMargin) 0 0 !important;
     border-radius: var(--radius) !important;
 }
@@ -122,10 +122,6 @@ button.vivaldi {
     border-radius: var(--radius) !important;
     left: var(--ribbonSidebarSize) !important;
 }
-
-/* #panels-container.overlay .panel-group {
-    background-color: var(--ribbonColorAccentBgAlpha) !important;
-} */
 
 #panels-container:not(.overlay) .panel-group {
     background-color: transparent !important;
@@ -182,7 +178,7 @@ header.webpanel-header {
 
 /* footer */
 
-#browser:not(.fullscreen) footer {
+#browser:not(.fullscreen) footer:has(div) {
     margin: 0 var(--ribbonMargin) var(--ribbonMargin) var(--ribbonMargin) !important;
     border-radius: var(--radius) !important;
     background-color: var(--colorBgAlphaHeavy) !important;
