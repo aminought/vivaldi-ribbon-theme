@@ -33,7 +33,6 @@
             if (REPLACE_DARK_COLOR) {
                 this.#replaceDarkColor();
             }
-            this.#setRibbonColorAccentBgAlpha();
         };
 
         // actions
@@ -48,13 +47,6 @@
             }
         }
 
-        #setRibbonColorAccentBgAlpha() {
-            const color = this.#colorAccentBgDarker + 'b0';
-            if (this.#ribbonColorAccentBgAlpha !== color) {
-                this.#ribbonColorAccentBgAlpha = color;
-            }
-        }
-
         // getters
 
         get #browser() {
@@ -65,20 +57,12 @@
             return this.#browser.style.getPropertyValue('--colorAccentBg');
         }
 
-        get #colorAccentBgDarker() {
-            return this.#browser.style.getPropertyValue('--colorAccentBgDarker');
-        }
-
         get #backgroundImage() {
             return this.#browser.style.backgroundImage;
         }
 
         get #ribbonBackgroundImage() {
             return this.#browser.style.getPropertyValue('--ribbonBackgroundImage');
-        }
-
-        get #ribbonColorAccentBgAlpha() {
-            return this.#browser.style.getPropertyValue('--ribbonColorAccentBgAlpha');
         }
 
         // setters
@@ -89,10 +73,6 @@
 
         set #ribbonBackgroundImage(image) {
             this.#browser.style.setProperty('--ribbonBackgroundImage', image);
-        }
-
-        set #ribbonColorAccentBgAlpha(color) {
-            this.#browser.style.setProperty('--ribbonColorAccentBgAlpha', color);
         }
     };
 

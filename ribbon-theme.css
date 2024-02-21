@@ -1,6 +1,6 @@
 :root {
     --ribbonTransition: 0.5s;
-    --ribbonMargin: 3px;
+    --ribbonSpacing: 3px;
     --ribbonSidebarSize: 28px;
     --ribbonFooterSize: 24px;
 }
@@ -10,105 +10,111 @@
 #browser {
     background-image: none !important;
     background-color: var(--colorAccentBg) !important;
-    transition: background-color var(--ribbonTransition) !important;
 }
 
-/* header */
-
-#browser:not(.fullscreen) #header {
-    padding: var(--ribbonMargin) 0 var(--ribbonMargin) 0 !important;
+.startpage {
+    background-image: var(--ribbonBackgroundImage) !important;
+    background-position: center !important;
+    background-size: cover !important;
 }
 
-button.vivaldi {
-    display: none !important;
+/* colors */
+
+.accordion-toggle-arrow,
+#browser.color-behind-tabs-on .UrlBar-AddressField {
+    background-color: var(--colorAccentBgAlphaHeavy) !important;
 }
 
-#tabs-container {
-    padding-left: 0px !important;
+#browser.color-behind-tabs-off #header,
+#browser:not(.fullscreen).color-behind-tabs-on .mainbar,
+#browser.color-behind-tabs-on .tab.active,
+#panels-container,
+footer,
+#mail_search .list-wrapper {
+    /* background-color: var(--colorBg) !important; */
+    background-color: var(--colorBgAlphaBlur) !important;
 }
 
-/* tabs */
+#browser.color-behind-tabs-off .UrlBar-AddressField,
+.OmniDropdown,
+.modal-wrapper,
+.dial {
+    background-color: var(--colorBgAlphaBlur) !important;
+    backdrop-filter: var(--backgroundBlur) !important;
+}
 
-#header,
-#browser:not(.transparent-tabbar) #tabs-tabbar-container,
-#browser.color-behind-tabs-on .tab.active.active,
-#browser .tab.active,
-.color-behind-tabs-off .mainbar {
+#browser.color-behind-tabs-off #tabs-tabbar-container,
+.quick-commands,
+.tab.active:before,
+.tab.active:after,
+footer::after {
+    background-color: transparent !important;
+}
+
+#panels #switch {
+    backdrop-filter: none !important;
+}
+
+/* color transitions */
+
+#browser, #header, #tabs-tabbar-container, .tab.active, .mainbar {
     transition: background-color var(--ribbonTransition), border-color var(--ribbonTransition) !important;
 }
 
-.accordion-toggle-arrow {
-    background-color: var(--colorAccentBgAlphaHeavy) !important;
+/* ribbon spacing */
+
+#browser:not(.fullscreen) {
+    padding: var(--ribbonSpacing) !important;
 }
+
+#browser.color-behind-tabs-off #tabs-tabbar-container {
+    padding-top: var(--ribbonSpacing) !important;
+    padding-bottom: var(--ribbonSpacing) !important;
+}
+
+#browser:not(.fullscreen) #header,
+#browser:not(.fullscreen) .mainbar {
+    margin-bottom: var(--ribbonSpacing) !important;
+}
+
+#browser:not(.fullscreen) #panels-container.left:not(.switcher) {
+    margin-right: var(--ribbonSpacing) !important;
+}
+
+#browser:not(.fullscreen) #panels-container.overlay .panel-group {
+    margin-left: var(--ribbonSpacing) !important;
+}
+
+#browser:not(.fullscreen) footer:has(div) {
+    margin-top: var(--ribbonSpacing) !important;
+}
+
+/* border radius */
 
 .tab.active {
     border-bottom-left-radius: var(--radiusHalf) !important;
     border-bottom-right-radius: var(--radiusHalf) !important;
-    height: 29px !important;
 }
 
-.tab.active:before,
-.tab.active:after {
-    background-color: transparent !important;
-}
-
-.color-behind-tabs-on .tab.active {
-    background-color: var(--colorBgAlphaHeavy) !important;
-}
-
-/* address panel */
-
-.mainbar {
-    transition: border-color var(--ribbonTransition) !important;
-    border-width: 0 !important;
+#browser:not(.fullscreen) #header,
+#browser:not(.fullscreen) #tabs-tabbar-container,
+#browser:not(.fullscreen) .mainbar,
+#browser:not(.fullscreen) #panels-container,
+#browser:not(.fullscreen) .panel-group,
+#browser:not(.fullscreen) #webview-container,
+#browser:not(.fullscreen) #webpage-stack,
+#browser:not(.fullscreen) footer {
     border-radius: var(--radius) !important;
 }
 
-#browser:not(.fullscreen).color-behind-tabs-on .mainbar {
-    margin: 0 var(--ribbonMargin) var(--ribbonMargin) var(--ribbonMargin) !important;
-    background-color: var(--colorBg);
-}
+/* sidebar size */
 
-.UrlBar-AddressField {
-    border: none !important;
-}
-
-.color-behind-tabs-on .UrlBar-AddressField {
-    background-color: var(--colorAccentBgAlphaHeavy) !important;
-}
-
-.color-behind-tabs-off .UrlBar-AddressField {
-    background-color: var(--colorBgAlphaBlur) !important;
-}
-
-.OmniDropdown {
-    background-color: var(--colorBgAlpha) !important;
-    backdrop-filter: var(--backgroundBlur) !important;
-}
-
-/* side panel + content */
-
-#browser:not(.fullscreen) .inner {
-    margin: 0 var(--ribbonMargin) var(--ribbonMargin) var(--ribbonMargin) !important;
-}
-
-/* side panel */
-
-#browser:not(.fullscreen) #panels-container.left.icons {
-    margin: 0 var(--ribbonMargin) 0 0 !important;
-    border-radius: var(--radius) !important;
-}
-
-#browser:not(.fullscreen) #panels #switch {
-    backdrop-filter: none !important;
-}
-
-#browser:not(.fullscreen) #panels-container.icons,
-#browser:not(.fullscreen) #panels-container.overlay,
-#browser:not(.fullscreen) #panels,
-#browser:not(.fullscreen) #switch,
-#browser:not(.fullscreen) .toolbar-panel,
-#browser:not(.fullscreen) .toolbar-panel .button-toolbar {
+#panels-container.icons,
+#panels-container.overlay,
+#panels,
+#switch,
+.toolbar-panel,
+.toolbar-panel .button-toolbar {
     width: var(--ribbonSidebarSize) !important;
 }
 
@@ -118,13 +124,29 @@ button.vivaldi {
 }
 
 .panel-group {
-    margin: 0 0 0 var(--ribbonMargin) !important;
-    border-radius: var(--radius) !important;
     left: var(--ribbonSidebarSize) !important;
 }
 
-#panels-container:not(.overlay) .panel-group {
-    background-color: transparent !important;
+/* fixes and decorations */
+
+button.vivaldi {
+    display: none !important;
+}
+
+#tabs-container {
+    padding-left: 0px !important;
+}
+
+.tab.active {
+    height: 29px !important;
+}
+
+.mainbar {
+    border-width: 0 !important;
+}
+
+.UrlBar-AddressField {
+    border: none !important;
 }
 
 .panel-collapse-guard {
@@ -134,13 +156,6 @@ button.vivaldi {
 
 header.webpanel-header {
     box-shadow: none !important;
-}
-
-/* content */
-
-#webview-container,
-#webpage-stack {
-    border-radius: var(--radius) !important;
 }
 
 #webview-container:has(#webpage-stack .tiled.visible) {
@@ -153,48 +168,7 @@ header.webpanel-header {
     box-shadow: none !important;
 }
 
-/* start page */
-
-.startpage {
-    background-image: var(--ribbonBackgroundImage) !important;
-    background-position: center !important;
-    background-size: cover !important;
-}
-
-.dial {
-    backdrop-filter: var(--backgroundBlur) !important;
-}
-
-/* quick commands */
-
-.modal-wrapper {
-    background-color: var(--colorBgAlpha) !important;
-    backdrop-filter: var(--backgroundBlur) !important;
-}
-
-.quick-commands {
-    background-color: inherit !important;
-}
-
-/* footer */
-
-#browser:not(.fullscreen) footer:has(div) {
-    margin: 0 var(--ribbonMargin) var(--ribbonMargin) var(--ribbonMargin) !important;
-    border-radius: var(--radius) !important;
-    background-color: var(--colorBgAlphaHeavy) !important;
-}
-
-footer::after {
-    background-color: transparent !important;
-}
-
 footer .toolbar-statusbar,
 footer .toolbar-statusbar .button-toolbar button {
     height: var(--ribbonFooterSize) !important;
-}
-
-/* mail */
-
-#mail_search .list-wrapper {
-    background-color: var(--colorBg) !important;
 }
