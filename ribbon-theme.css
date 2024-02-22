@@ -131,18 +131,18 @@ footer::after {
 
 /* center tabs */
 
-.tab-strip {
+#app.RibbonCenterTabs .tab-strip {
     display:flex;
     flex-direction:row;
     justify-content:center;
 }
 
-.tab-position {
+#app.RibbonCenterTabs .tab-position {
     position: initial;
     --PositionX:0 !important;
 }
 
-.tab-strip .newtab {
+#app.RibbonCenterTabs .tab-strip .newtab {
     left:0 !important;
 }
 
@@ -222,4 +222,5 @@ footer .toolbar-statusbar .button-toolbar button {
     overflow: hidden;
     text-overflow: ellipsis;
     line-height: 26px;
+    font-size: 14px;
 }

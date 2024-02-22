@@ -2,10 +2,11 @@
     "use strict";
 
     const REPLACE_DARK_COLOR = true;
+    const YANDEX_BROWSER_TITLE = true;
+    const CENTER_TABS = true;
+
     const DARK_COLOR_BRIGHTNESS_THRESHOLD = 50;
     const DARK_COLOR_REPLACEMENT = "#808080";
-
-    const YANDEX_BROWSER_TITLE = true;
 
     class RibbonTheme {
         #browserStyleMutationObserver = null;
@@ -18,7 +19,10 @@
                 this.#replaceDarkColor();
             }
             if (YANDEX_BROWSER_TITLE) {
-                this.modifyUrlFragments();
+                this.#modifyUrlFragments();
+            }
+            if (CENTER_TABS) {
+                this.#centerTabs();
             }
 
             this.#browserStyleMutationObserver = this.#createBrowserStyleMutationObserver();
@@ -59,7 +63,7 @@
 
         #handleTitleMutations() {
             if (YANDEX_BROWSER_TITLE) {
-                this.modifyUrlFragments();
+                this.#modifyUrlFragments();
             }
         };
 
@@ -75,7 +79,7 @@
             }
         }
 
-        modifyUrlFragments() {
+        #modifyUrlFragments() {
             if (this.#ribbonDomain) {
                 this.#urlFragments.removeChild(this.#ribbonDomain);
             }
@@ -98,7 +102,15 @@
             }
         }
 
+        #centerTabs() {
+            this.#app.classList.add('RibbonCenterTabs');
+        }
+
         // getters
+
+        get #app() {
+            return document.querySelector('#app');
+        }
 
         get #browser() {
             return document.querySelector('#browser');
