@@ -38,6 +38,8 @@ footer,
 #browser.color-behind-tabs-off .UrlBar-AddressField,
 .OmniDropdown,
 .modal-wrapper,
+.startpage-navigation,
+.SpeedDial-Blocked-Counter,
 .dial {
     background-color: var(--colorBgAlphaBlur) !important;
     backdrop-filter: var(--backgroundBlur) !important;
@@ -170,22 +172,29 @@ button.vivaldi {
     border: none !important;
 }
 
+.progress-done {
+    opacity: 0 !important;
+    transition: opacity var(--ribbonTransition) !important;
+}
+
 .panel-collapse-guard {
     min-width: auto !important;
     max-width: none !important;
 }
 
-header.webpanel-header {
+#panels-container.switcher {
+    width: 0 !important;
+}
+
+header.webpanel-header,
+.startpage-navigation,
+.tile,
+.webpageview.tiled:not(.active) {
     box-shadow: none !important;
 }
 
 #webview-container:has(#webpage-stack .tiled.visible) {
     padding: 0px !important;
-    box-shadow: none !important;
-}
-
-.tile,
-.webpageview.tiled:not(.active) {
     box-shadow: none !important;
 }
 
