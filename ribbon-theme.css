@@ -201,6 +201,10 @@ footer .toolbar-statusbar .button-toolbar button {
     display: none;
 }
 
+.RibbonDomain {
+    line-height: 26px;
+}
+
 .RibbonTitle {
     width: 100vw;
     margin-left: 10px;
@@ -208,4 +212,5 @@ footer .toolbar-statusbar .button-toolbar button {
     text-align: center;
     overflow: hidden;
     text-overflow: ellipsis;
+    line-height: 26px;
 }
