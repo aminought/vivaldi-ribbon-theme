@@ -5,13 +5,24 @@
     const DARK_COLOR_BRIGHTNESS_THRESHOLD = 50;
     const DARK_COLOR_REPLACEMENT = "#808080";
 
+    const YANDEX_BROWSER_TITLE = true;
+
     class RibbonTheme {
         #browserStyleMutationObserver = null;
+        #titleMutationObserver = null;
 
         constructor() {
             this.#fetchBackgroundImage();
-            this.#replaceDarkColor();
+
+            if (REPLACE_DARK_COLOR) {
+                this.#replaceDarkColor();
+            }
+            if (YANDEX_BROWSER_TITLE) {
+                this.modifyUrlFragments();
+            }
+
             this.#browserStyleMutationObserver = this.#createBrowserStyleMutationObserver();
+            this.#titleMutationObserver = this.#createTitleMutationObserver();
         }
 
         // builders
@@ -27,11 +38,28 @@
             return browserStyleMutationObserver;
         }
 
+        #createTitleMutationObserver() {
+            const titleMutationObserver = new MutationObserver(() => {
+                this.#handleTitleMutations();
+            });
+            titleMutationObserver.observe(this.#head, {
+                childList: true,
+                subtree: true
+            });
+            return titleMutationObserver;
+        }
+
         // handlers
 
         #handleBrowserStyleMutations() {
             if (REPLACE_DARK_COLOR) {
                 this.#replaceDarkColor();
+            }
+        };
+
+        #handleTitleMutations() {
+            if (YANDEX_BROWSER_TITLE) {
+                this.modifyUrlFragments();
             }
         };
 
@@ -45,6 +73,29 @@
             if (this.#colorAccentBg != DARK_COLOR_REPLACEMENT && getBrightness(this.#colorAccentBg) < DARK_COLOR_BRIGHTNESS_THRESHOLD) {
                 this.#colorAccentBg = DARK_COLOR_REPLACEMENT;
             }
+        }
+
+        modifyUrlFragments() {
+            const title = this.#title.innerText;
+            const domain = this.#urlFragmentLink.innerText;
+
+            const domainDiv = document.createElement('div');
+            domainDiv.className = 'UrlFragment--Lowlight RibbonDomain';
+            domainDiv.innerText = domain;
+
+            const titleDiv = document.createElement('div');
+            titleDiv.className = 'UrlFragment--Highlight RibbonTitle';
+            titleDiv.innerText = title;
+
+            if (this.#ribbonDomain && this.#ribbonTitle) {
+                this.#urlFragments.removeChild(this.#ribbonDomain);
+                this.#urlFragments.removeChild(this.#ribbonTitle);
+            }
+
+            this.#urlFragmentLowlights.forEach(e => e.style.display = 'none');
+            this.#urlFragmentLinkWrapper.style.display = 'none';
+            this.#urlFragments.appendChild(domainDiv);
+            this.#urlFragments.appendChild(titleDiv);
         }
 
         // getters
@@ -63,6 +114,38 @@
 
         get #ribbonBackgroundImage() {
             return this.#browser.style.getPropertyValue('--ribbonBackgroundImage');
+        }
+
+        get #urlFragments() {
+            return document.querySelector('.UrlFragments');
+        }
+
+        get #urlFragmentLink() {
+            return document.querySelector('.UrlFragment-Link');
+        }
+
+        get #head() {
+            return document.querySelector('head');
+        }
+
+        get #title() {
+            return document.querySelector('title');
+        }
+
+        get #ribbonDomain() {
+            return document.querySelector('.RibbonDomain');
+        }
+
+        get #ribbonTitle() {
+            return document.querySelector('.RibbonTitle');
+        }
+
+        get #urlFragmentLowlights() {
+            return document.querySelectorAll('.UrlFragment--Lowlight:not(.RibbonDomain)');
+        }
+
+        get #urlFragmentLinkWrapper() {
+            return document.querySelector('.UrlFragment-LinkWrapper');
         }
 
         // setters

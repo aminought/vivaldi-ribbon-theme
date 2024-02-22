@@ -193,3 +193,19 @@ footer .toolbar-statusbar,
 footer .toolbar-statusbar .button-toolbar button {
     height: var(--ribbonFooterSize) !important;
 }
+
+/* yandex browser title */
+
+.UrlFragments:has(.RibbonTitle) .UrlFragment--Lowlight:not(.RibbonDomain),
+.UrlFragments:has(.RibbonTitle) .UrlFragment-LinkWrapper {
+    display: none;
+}
+
+.RibbonTitle {
+    width: 100vw;
+    margin-left: 10px;
+    margin-right: 10px;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
