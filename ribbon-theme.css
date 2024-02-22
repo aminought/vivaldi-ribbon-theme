@@ -205,13 +205,26 @@ footer .toolbar-statusbar .button-toolbar button {
 
 /* yandex browser title */
 
-.UrlFragments:has(.RibbonTitle) .UrlFragment--Lowlight:not(.RibbonDomain),
-.UrlFragments:has(.RibbonTitle) .UrlFragment-LinkWrapper {
+.UrlBar-AddressField:has(.RibbonDomain) .UrlFragment--Lowlight:not(.RibbonDomain),
+.UrlBar-AddressField:has(.RibbonDomain) .UrlFragment-LinkWrapper,
+.UrlBar-AddressField:has(.RibbonDomain) .UrlFragment--Highlight:not(.RibbonTitle) {
     display: none;
 }
 
-.RibbonDomain {
-    line-height: 26px;
+.UrlFragments:has(.RibbonTitle) {
+    display: flex;
+}
+
+.RibbonDomainButton {
+    height: 22px;
+    background-color: var(--colorBgAlphaHeavy);
+    margin-left: 4px;
+    border: none;
+    line-height: 0;
+    display: flex;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
 }
 
 .RibbonTitle {
@@ -223,4 +236,6 @@ footer .toolbar-statusbar .button-toolbar button {
     text-overflow: ellipsis;
     line-height: 26px;
     font-size: 14px;
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
 }
