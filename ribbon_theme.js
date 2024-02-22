@@ -76,26 +76,26 @@
         }
 
         modifyUrlFragments() {
-            const title = this.#title.innerText;
-            const domain = this.#urlFragmentLink.innerText;
-
-            const domainDiv = document.createElement('div');
-            domainDiv.className = 'UrlFragment--Lowlight RibbonDomain';
-            domainDiv.innerText = domain;
-
-            const titleDiv = document.createElement('div');
-            titleDiv.className = 'UrlFragment--Highlight RibbonTitle';
-            titleDiv.innerText = title;
-
-            if (this.#ribbonDomain && this.#ribbonTitle) {
+            if (this.#ribbonDomain) {
                 this.#urlFragments.removeChild(this.#ribbonDomain);
+            }
+            if (this.#ribbonTitle) {
                 this.#urlFragments.removeChild(this.#ribbonTitle);
             }
-
-            this.#urlFragmentLowlights.forEach(e => e.style.display = 'none');
-            this.#urlFragmentLinkWrapper.style.display = 'none';
-            this.#urlFragments.appendChild(domainDiv);
-            this.#urlFragments.appendChild(titleDiv);
+            if (this.#urlFragmentLink) {
+                const domain = this.#urlFragmentLink.innerText;
+                const domainDiv = document.createElement('div');
+                domainDiv.className = 'UrlFragment--Lowlight RibbonDomain';
+                domainDiv.innerText = domain;
+                this.#urlFragments.appendChild(domainDiv);
+            }
+            if (this.#title) {
+                const title = this.#title.innerText;
+                const titleDiv = document.createElement('div');
+                titleDiv.className = 'UrlFragment--Highlight RibbonTitle';
+                titleDiv.innerText = title;
+                this.#urlFragments.appendChild(titleDiv);
+            }
         }
 
         // getters
@@ -117,7 +117,7 @@
         }
 
         get #urlFragments() {
-            return document.querySelector('.UrlFragments');
+            return document.querySelector('.UrlFragment-Wrapper');
         }
 
         get #urlFragmentLink() {
@@ -138,14 +138,6 @@
 
         get #ribbonTitle() {
             return document.querySelector('.RibbonTitle');
-        }
-
-        get #urlFragmentLowlights() {
-            return document.querySelectorAll('.UrlFragment--Lowlight:not(.RibbonDomain)');
-        }
-
-        get #urlFragmentLinkWrapper() {
-            return document.querySelector('.UrlFragment-LinkWrapper');
         }
 
         // setters
