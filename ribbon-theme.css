@@ -141,6 +141,10 @@ button.vivaldi {
     height: 29px !important;
 }
 
+.stack-frame {
+    stroke-width: 3px !important;
+}
+
 .mainbar {
     border-width: 0 !important;
 }
