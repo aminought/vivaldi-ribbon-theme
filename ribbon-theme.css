@@ -127,6 +127,23 @@ footer::after {
     left: var(--ribbonSidebarSize) !important;
 }
 
+/* center tabs */
+
+.tab-strip {
+    display:flex;
+    flex-direction:row;
+    justify-content:center;
+}
+
+.tab-position {
+    position: initial;
+    --PositionX:0 !important;
+}
+
+.tab-strip .newtab {
+    left:0 !important;
+}
+
 /* fixes and decorations */
 
 button.vivaldi {
