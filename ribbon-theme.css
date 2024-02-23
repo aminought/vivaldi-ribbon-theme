@@ -31,7 +31,6 @@
 #panels-container,
 footer,
 #mail_search .list-wrapper {
-    /* background-color: var(--colorBg) !important; */
     background-color: var(--colorBgAlphaBlur) !important;
 }
 
@@ -223,8 +222,6 @@ footer .toolbar-statusbar .button-toolbar button {
     line-height: 0;
     display: flex;
     align-items: center;
-    opacity: 0;
-    transition: opacity 0.2s ease-in-out;
 }
 
 .RibbonTitle {
@@ -236,6 +233,4 @@ footer .toolbar-statusbar .button-toolbar button {
     text-overflow: ellipsis;
     line-height: 26px;
     font-size: 14px;
-    opacity: 0;
-    transition: opacity 0.2s ease-in-out;
 }

@@ -2,9 +2,9 @@
     "use strict";
 
     const FETCH_BACKGROUND_IMAGE = true;
-    const REPLACE_DARK_COLOR = true;
+    const REPLACE_DARK_COLOR = false;
     const YANDEX_BROWSER_TITLE = true;
-    const CENTER_TABS = true;
+    const CENTER_TABS = false;
 
     const DARK_COLOR_BRIGHTNESS_THRESHOLD = 50;
     const DARK_COLOR_REPLACEMENT = "#808080";
@@ -64,20 +64,34 @@
     };
 
     class YandexBrowserTitle {
+        #urlFieldMutationObserver = null;
         #titleMutationObserver = null;
 
         constructor() {
-            this.#modifyAddressField();
+            this.#placeRibbonDomainButton();
+            this.#placeRibbonTitle();
+            this.#urlFieldMutationObserver = this.#createUrlFieldMutationObserver();
             this.#titleMutationObserver = this.#createTitleMutationObserver();
         }
 
         // listeners
 
+        #createUrlFieldMutationObserver() {
+            const urlFieldMutationObserver = new MutationObserver(() => {
+                this.#placeRibbonDomainButton();
+            });
+            urlFieldMutationObserver.observe(this.#urlFieldInput, {
+                attributes: true,
+                attributeFilter: ['value']
+            });
+            return urlFieldMutationObserver;
+        }
+
         #createTitleMutationObserver() {
             const titleMutationObserver = new MutationObserver(() => {
-                setTimeout(() => this.#modifyAddressField(), 10);
+                this.#placeRibbonTitle();
             });
-            titleMutationObserver.observe(this.#head, {
+            titleMutationObserver.observe(this.#title, {
                 childList: true,
                 subtree: true
             });
@@ -105,8 +119,9 @@
             const ribbonDomain = this.#createRibbonDomain(domainInfo['domain']);
             ribbonDomainButton.appendChild(ribbonDomain);
             this.#urlBarAddressField.insertBefore(ribbonDomainButton, this.#urlBarUrlFieldWrapper);
-            this.#addRibbonDomainButtonListener(domainInfo);
-            setTimeout(() => {ribbonDomainButton.style.opacity = 1}, 10);
+            if (domainInfo['clickable']) {
+                this.#addRibbonDomainButtonListener(domainInfo);
+            }
             return ribbonDomainButton;
         }
 
@@ -124,13 +139,11 @@
         }
 
         #createRibbonTitle() {
-            const ribbonTitle = this.#createRibbonTitleEmpty();
-            this.#urlFragments.appendChild(ribbonTitle);
-            setTimeout(() => {ribbonTitle.style.opacity = 1}, 10);
-        }
+            var title = this.#title.innerText;
+            if (title === 'Vivaldi') {
+                title = this.#parseTitleFromUrl(this.#activeWebview.getAttribute('src'));
+            }
 
-        #createRibbonTitleEmpty() {
-            const title = this.#title.innerText;
             const ribbonTitle = document.createElement('div');
             ribbonTitle.className = 'UrlFragment--Highlight RibbonTitle';
             ribbonTitle.innerText = title;
@@ -139,19 +152,23 @@
 
         // actions
 
-        #modifyAddressField() {
+        #placeRibbonDomainButton() {
             if (this.#ribbonDomainButton) {
                 this.#urlBarAddressField.removeChild(this.#ribbonDomainButton);
             }
+            if (this.#urlFragmentLink || this.#urlFragmentHighlight) {
+                this.#createRibbonDomainButton();
+            }
+        }
+
+        #placeRibbonTitle() {
             if (this.#ribbonTitle) {
                 this.#urlFragments.removeChild(this.#ribbonTitle);
             }
-            if (this.#urlFragmentLink || this.#urlFragmentHighlight) {
-                const ribbonDomainButton = this.#createRibbonDomainButton();
-                if (ribbonDomainButton && this.#title) {
-                    this.#createRibbonTitle();
-                }
-            }
+            if (!this.#title) return;
+
+            const ribbonTitle = this.#createRibbonTitle();
+            this.#urlFragments.appendChild(ribbonTitle);
         }
 
         // helpers
@@ -175,24 +192,30 @@
 
         #parseUrlDomain(url) {
             if (url.startsWith('vivaldi://')) {
-                return {type: 'vivaldi', domain: this.#parseVivaldiDomain(url)};
+                const domain = this.#parseVivaldiDomain(url);
+                return {type: 'vivaldi', domain: domain, clickable: true};
             } else if (url.startsWith('file://')) {
-                return {type: 'file', domain: null};
+                return {type: 'file', domain: 'file', clickable: false};
             } else if (url.startsWith('about:')) {
-                return {type: 'about', domain: url};
+                return {type: 'about', domain: url, clickable: true};
             } else {
-                return {type: 'url', domain: url};
+                return {type: 'url', domain: url, clickable: true};
             }
+        }
+
+        #parseTitleFromUrl(title) {
+            const regexp = /\/([^\/]*)$/;
+            return title.match(regexp)[1];
         }
 
         // getters
 
-        get #head() {
-            return document.querySelector('head');
-        }
-
         get #title() {
             return document.querySelector('title');
+        }
+
+        get #urlFieldInput() {
+            return document.querySelector('#urlFieldInput');
         }
 
         get #activeWebview() {
