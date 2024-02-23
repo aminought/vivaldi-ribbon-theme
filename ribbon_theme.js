@@ -64,20 +64,21 @@
     };
 
     class YandexBrowserTitle {
-        #urlFieldMutationObserver = null;
-        #titleMutationObserver = null;
+        urlFieldMutationObserver = null;
+        titleMutationObserver = null;
 
         constructor() {
             this.#placeRibbonDomainButton();
             this.#placeRibbonTitle();
-            this.#urlFieldMutationObserver = this.#createUrlFieldMutationObserver();
-            this.#titleMutationObserver = this.#createTitleMutationObserver();
+            this.urlFieldMutationObserver = this.#createUrlFieldMutationObserver();
+            this.titleMutationObserver = this.#createTitleMutationObserver();
         }
 
         // listeners
 
         #createUrlFieldMutationObserver() {
             const urlFieldMutationObserver = new MutationObserver(() => {
+                // setTimeout(() => this.#modifyAddressField(), 50);
                 this.#placeRibbonDomainButton();
             });
             urlFieldMutationObserver.observe(this.#urlFieldInput, {
@@ -153,6 +154,7 @@
         // actions
 
         #placeRibbonDomainButton() {
+            if (!this.#urlBarAddressField) return;
             if (this.#ribbonDomainButton) {
                 this.#urlBarAddressField.removeChild(this.#ribbonDomainButton);
             }
@@ -162,6 +164,7 @@
         }
 
         #placeRibbonTitle() {
+            if (!this.#urlFragments) return;
             if (this.#ribbonTitle) {
                 this.#urlFragments.removeChild(this.#ribbonTitle);
             }
