@@ -205,3 +205,7 @@ footer .toolbar-statusbar,
 footer .toolbar-statusbar .button-toolbar button {
     height: var(--ribbonFooterSize) !important;
 }
+
+.speeddial .dial > .thumbnail-title {
+    justify-content: center;
+}
